@@ -1,0 +1,33 @@
+import random
+def determine_winner(user_choice, computer_choice):
+    rules = {
+        "rock": "scissors",
+        "scissors": "paper",
+        "paper": "rock"
+    }
+    if user_choice == computer_choice:
+        return "It's a tie!"
+    elif rules[user_choice] == computer_choice:
+        return "You win!"
+    else:
+        return "Computer wins!"
+
+def main():
+    choices = ["rock", "paper", "scissors"]
+    print("Welcome to Rock-Paper-Scissors!")
+    while True:
+        user_choice = input("Enter rock, paper, or scissors (or 'quit' to exit): ").lower()
+        if user_choice == "quit":
+            print("Thanks for playing! Goodbye.")
+            break
+        if user_choice not in choices:
+            print("Invalid choice. Please try again.")
+            continue
+        computer_choice = random.choice(choices)
+        print(f"Computer chose: {computer_choice}")
+        result = determine_winner(user_choice, computer_choice)
+        print(result)
+        print("-" * 30)
+
+if _name_ == "_main_":
+    main()
